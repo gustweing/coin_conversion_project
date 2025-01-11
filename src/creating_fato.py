@@ -1,6 +1,9 @@
 import pandas as pd
-from auxiliares_fato import * 
+from auxiliares import *
 from datetime import datetime, timedelta
+from models import ProductCliente, ProductOptions
+from database import Sessionlocal
+from sqlalchemy.orm import Session
 import random
 
 def gerar_datas_aleatorias(data_inicio, data_fim):
@@ -55,3 +58,33 @@ def gerar_tabela(empresas_moeda):
     )
 
     return df
+
+def ingestao_fato():
+    clientes = gerar_clientes()
+    df = gerar_tabela(clientes)
+    db: Session = Sessionlocal()  
+    for _, row in df.iterrows():
+        cadastro = ProductOptions(
+            nome_empresa = row['nome_empresa'],
+            moeda = row['moeda'],
+            acao = row['tipo_operacao'], 
+            valor_acao = ['quantidade'],
+            dia_acao = row['dia']
+        ) 
+        db.add(cadastro)
+        db.commit()
+        db.close()
+
+def ingestao_clientes():
+    empresas_moeda = gerar_clientes()
+    db: Session = Sessionlocal()
+
+    df_empresas = pd.DataFrame(empresas_moeda)
+    for _, row in df_empresas.iterrows():
+        cadastro = ProductCliente(
+            nome_empresa = row['nome_empresa'],
+            moeda_empresa = row['moeda']
+        ) 
+        db.add(cadastro)
+        db.commit()
+        db.close()

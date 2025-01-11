@@ -7,4 +7,10 @@ class ProductUpdate(BaseModel):
     max: PositiveFloat
     min: PositiveFloat
     bid: PositiveFloat
-    time: datetime    
+    time: datetime
+
+class ClientUpdate(BaseModel):
+    pass
+
+class FatoUpdate(BaseModel):
+    pass
