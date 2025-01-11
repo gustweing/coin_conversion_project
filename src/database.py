@@ -2,9 +2,11 @@
 
 from sqlalchemy import create_engine 
 from sqlalchemy.orm import sessionmaker, declarative_base
-from imports import *
 
-engine = create_engine(POSTGRESS_DECLARATIVE_URL) #Change here for your database. I'm using POSTGRESQL, but you can use another one. 
+SQLITE_DECLARATIVE_URL = "sqlite:///./coinbase.sqlite"
+
+engine = create_engine(SQLITE_DECLARATIVE_URL) #Estou utilizando SQLite para quem desejar rodar, conseguir 
+#sem problemas de acesso a bancos. 
 Sessionlocal = sessionmaker(
     autocommit = False, 
     autoflush = False, 
