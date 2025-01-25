@@ -2,9 +2,36 @@
 
 # Arquitetura Escolhida
 
-A arquitetura escolhida para a resolução deste projeto foi a ELT. 
-Extrairemos nosso dado de uma API pública, faremos a ingestão destes dados no PostgreSQL e então criaremos algumas tabelas para consumo de negócio. 
-Estas tabelas serão consumidas no Power BI para publicação de um Dashboard de negócios. 
-Também consumiremos a tabela para a criação de um modelo de clusterização que responda algumas perguntas de negócio. 
+Para o desenvolvimento deste projeto, escolheremos uma API pública e criaremos um script de Python que realizará a extração do dado e o salvará dentro de um banco SQLite. 
+A escolha do SQLite ocorreu para que localmente o próprio usuário consiga rodar o dado e verificar o resultado. 
 
 ![Arquitetura escolhida](images/new_arch.png)
+
+# Tecnologias
+
+As tecnologias utilizadas para o desenvolvimento deste projeto foram as seguintes:
+
+Linguagem de programação: Pyhton
+Principais bibliotecas: Pydantic para validação dos dados e SQLAlchemy para comunicação com o banco de dados. 
+
+# Requisitos
+
+- Python 3.12
+- [Poetry](https://python-poetry.org/) instalado
+
+# Como rodar o projeto
+
+Após clonar o repositório, certifique-se que o Poetry está instalado em sua máquina. 
+
+- Crie um ambiente virtual e acesse-o
+    - poetry init
+    - poetry shell
+
+- Instale suas dependências
+    - poetry install
+
+Para executar o projeto, será necessário rodar o seguinte script
+
+- Rodando o projeto
+    - poetry run python src/main.py
+
