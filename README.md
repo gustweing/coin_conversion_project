@@ -1,9 +1,10 @@
 # coin_conversion_project
 
-# Arquitetura Escolhida
+# Projeto
 
-Para o desenvolvimento deste projeto, escolheremos uma API pública e criaremos um script de Python que realizará a extração do dado e o salvará dentro de um banco SQLite. 
-A escolha do SQLite ocorreu para que localmente o próprio usuário consiga rodar o dado e verificar o resultado. 
+Este projeto tem como objetivo realizar a extração de dados de uma API pública a partir de um script de python. Após isso, os dados são salvos dentro de um SQLite para utilização do usuário após
+
+# Arquitetura Escolhida
 
 ![Arquitetura escolhida](images/new_arch.png)
 
